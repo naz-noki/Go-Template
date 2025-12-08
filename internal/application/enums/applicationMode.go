@@ -3,15 +3,17 @@ package enums
 type ApplicationMode string
 
 const (
-	LocalApplicationMode ApplicationMode = "local"
-	DevApplicationMode   ApplicationMode = "dev"
-	ProdApplicationMode  ApplicationMode = "prod"
+	LocalApplicationMode   ApplicationMode = "LOCAL"
+	DevApplicationMode     ApplicationMode = "DEV"
+	StagingApplicationMode ApplicationMode = "STAGING"
+	ProdApplicationMode    ApplicationMode = "PROD"
 )
 
-var applicationModes = map[ApplicationMode]struct{}{
-	LocalApplicationMode: {},
-	DevApplicationMode:   {},
-	ProdApplicationMode:  {},
+var applicationModes = map[ApplicationMode]string{
+	LocalApplicationMode:   "local",
+	DevApplicationMode:     "dev",
+	StagingApplicationMode: "staging",
+	ProdApplicationMode:    "prod",
 }
 
 func (t ApplicationMode) Valid() bool {
@@ -19,6 +21,10 @@ func (t ApplicationMode) Valid() bool {
 	return ok
 }
 
-func (t ApplicationMode) Value() string {
+func (t ApplicationMode) Key() string {
 	return string(t)
+}
+
+func (t ApplicationMode) Value() string {
+	return applicationModes[t]
 }

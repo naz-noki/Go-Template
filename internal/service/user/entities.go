@@ -1,4 +1,4 @@
-package userRepository
+package userService
 
 // ----------------------------------------
 // COMMON
@@ -7,6 +7,8 @@ package userRepository
 // ----------------------------------------
 // REPOSITORIES
 // ----------------------------------------
+
+type userRepository interface{}
 
 // ----------------------------------------
 // SERVICES

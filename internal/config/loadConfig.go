@@ -15,6 +15,12 @@ func Load() error {
 		return err
 	}
 	Config.App = app
+	// PostgreSQL configuration
+	postgres := new(Postgres)
+	if err := env.Parse(postgres); err != nil {
+		return err
+	}
+	Config.Postgres = postgres
 
 	return nil
 }
