@@ -4,6 +4,7 @@
 config.yaml
 .env
 
+notes/
 data/
 redis.conf
 

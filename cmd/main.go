@@ -6,11 +6,23 @@ import (
 	"log"
 	"os"
 	"os/signal"
+	"project/internal/config"
+	"project/internal/logger"
 	"syscall"
 )
 
 func start(ctx context.Context) {
-	log.Println(ctx)
+	// Load config for app
+	if err := config.Load(); err != nil {
+		log.Fatalln("Error when load config: ", err)
+	}
+	// Initialize the logger
+	logger, err := logger.Init(config.Config.App.Mode)
+	if err != nil {
+		log.Fatalln("Error when init logger: ", err)
+	}
+
+	logger.Info("Service successfully started...")
 }
 
 func main() {
